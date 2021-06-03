@@ -2,11 +2,13 @@
   <div class="sideBarRow" :class="option.check?'check':'nocheck'">
      <div class="sideBarRowName" @click="clickRow(option)">{{option.name}}</div>
      <!-- 非叶子结点 -->
-     <div class="sideBarRowList" v-if="option.children && option.children.length>0" >
-       <div v-for="(item,index) in option.children" :key="index">
-         <sideBarRow :option="item"></sideBarRow>
-       </div>
-     </div>
+      <transition name="fade">
+        <div class="sideBarRowList j-gray" v-if="option.check" >
+          <div v-for="(item,index) in option.children" :key="index">
+            <sideBarRow :option="item"></sideBarRow>
+          </div>
+        </div>
+     </transition>
   </div>
 </template>
 
@@ -31,7 +33,7 @@ export default {
   props: ['option'],
   data() {
     return {
-
+      show: false,
     };
   },
   components: {
@@ -49,7 +51,7 @@ export default {
     },
   },
   created() {
-    console.log(this.option);
+    // console.log(this.option);
   },
   setup() {
 
@@ -60,4 +62,21 @@ export default {
 <style scoped>
  .check>.sideBarRowList{display: block;}
  .nocheck>.sideBarRowList{display: none;}
+ .sideBarRow{
+   font-size: 14px;
+   border-bottom: 1px solid #fff;
+   }
+ .sideBarRowName{
+   padding: 5px 10px;
+ }
+
+/***************************** */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+/***************************** */
+
 </style>

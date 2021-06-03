@@ -1,47 +1,28 @@
 <template>
   <div class="home">
-    <sideBar :option="option"/>
-    <div class="routeWrap"><router-view/></div>
+   HOME
+   <button @click="show = !show">
+    Toggle
+  </button>
+    <transition name="fade">
+    <p v-if="show">hello</p>
+  </transition>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import sideBar from '@/components/base-ui/layout/sideBar.vue';
-/**
- * option {
- *  data:[{
- *    name:'',
- *    cb:Function,
- *    href:'',
- *    icon:'',
- *    children:[],
- *    width:num,
- *    check:boolean?
- *  }]
- * }
- * }
- */
+// import sideBar from '@/components/base-ui/layout/sideBar.vue';
 export default {
   name: 'Home',
   data() {
     return {
-      option: {
-        children: [
-          { name: '1' },
-          { name: '2', children: [{ name: '2.1' }, { name: '2.2' }, { name: '2.3' }] },
-          { name: '3', href: 'about' }],
-      },
+      show: true,
     };
   },
-  components: {
-    sideBar,
-  },
+  components: {},
 };
 </script>
 <style  scoped>
-  .home {
-    display: flex;
-  }
 
 </style>

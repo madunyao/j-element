@@ -1,4 +1,4 @@
-*{padding:0;margin:0;}
+*{padding:0;margin:0;box-sizing:border-box;}
 div,dl,dt,dd,form,h1,h2,h3,h4,h5,h6,img,ol,ul,li,table,th,td,p,span,a{border:0;}
 img,input{border:none;vertical-align:middle;}
 body{font-family:Tahoma,Arial,Helvetica,"宋体";font-size:12px;text-align:center;background:#FFF;color:#000;}
@@ -13,3 +13,47 @@ select{border-width:1px;_zoom:1;border-style:solid;padding-top:2px;font-size:12p
 .clearfix{zoom:1;}
 a:link,a:visited{text-decoration:none;color:#333;}
 a:hover,a:active{text-decoration:underline;color:#f60;}
+
+
+/***************************************/
+.j-black{
+  background-color: #3d3d3d;
+  color: #fff;
+}
+.j-black-deep{
+  background-color: #1f1f1f;
+  color: #fff;
+}
+.j-hot{
+  background-color: #d64635;
+  color: #fff;
+}
+.j-sea{
+  background-color: #4b8df8;
+  color: #fff;
+}
+.j-green{
+  background-color: #1bbc9b;
+  color: #fff;
+}
+.j-yellow{
+  background-color: #ffb848;
+  color: #fff;
+}
+.j-gray{
+  background-color: #e5e5e5;
+  color: #333;
+}
+/***************************************/
+/* transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+/***************************************/
