@@ -12,8 +12,8 @@ select{border-width:1px;_zoom:1;border-style:solid;padding-top:2px;font-size:12p
 .clearfix:after{content:"";display:block;clear:both;}
 .clearfix{zoom:1;}
 a:link,a:visited{text-decoration:none;color:#333;}
-a:hover,a:active{text-decoration:underline;color:#f60;}
-
+a:hover,a:active{text-decoration:none;color:#f60;}
+a{ text-decoration:none; }
 
 /***************************************/
 
@@ -47,4 +47,16 @@ select {
 }
 /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
 select::-ms-expand { display: none; }
+/***************************************/
+.buts-wrap{
+  display: flex;
+  justify-content: center;
+}
+button{
+  min-width: 100px;
+  padding: 5px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
 /***************************************/

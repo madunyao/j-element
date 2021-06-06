@@ -4,12 +4,13 @@ $balck-d :#1f1f1f;
 $red :#d64635;
 $blue : #1875e7;
 $green :#1bbc9b;
-$yellow :#ffb848;
+$yellow :#f8a41d;
 $gray :#e5e5e5;
 $white : #fff;
+$orange : #f60;
 
 @function b-hover($n) {
-  @return darken($n, 30%);
+  @return darken($n, 10%);
 }
 .j-w-black{
   color: $balck;
@@ -51,7 +52,7 @@ $white : #fff;
   background-color: $blue;
   color: #fff;
 }
-.j-blue-he{
+.j-blue-h{
   @extend .j-blue;
   &:hover {
     background-color: b-hover($blue);
