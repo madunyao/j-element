@@ -7,6 +7,7 @@
     <transition name="fade">
     <p v-if="show">hello</p>
   </transition>
+  <input type="text"/>
   </div>
 </template>
 

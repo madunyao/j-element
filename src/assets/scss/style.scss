@@ -1,0 +1,102 @@
+//*******************coclor*******************
+$balck :#3d3d3d;
+$balck-d :#1f1f1f;
+$red :#d64635;
+$blue : #1875e7;
+$green :#1bbc9b;
+$yellow :#ffb848;
+$gray :#e5e5e5;
+$white : #fff;
+
+@function b-hover($n) {
+  @return darken($n, 30%);
+}
+.j-w-black{
+  color: $balck;
+}
+.j-black{
+  background-color: $balck;
+  color: #fff;
+}
+.j-black-h{
+  @extend .j-black;
+  &:hover {
+    background-color: b-hover($balck);
+  }
+}
+.j-w-black-d{
+  color: $balck-d;
+}
+.j-black-d{
+  background-color: $balck-d;
+  color: #fff;
+}
+.j-black-d-h{
+  @extend .j-black-d;
+  &:hover {
+    background-color: b-hover($balck-d);
+  }
+}
+.j-red{
+  background-color: $red;
+  color: #fff;
+}
+.j-red-h{
+  @extend .j-red;
+  &:hover {
+    background-color: b-hover($red);
+  }
+}
+.j-blue{
+  background-color: $blue;
+  color: #fff;
+}
+.j-blue-he{
+  @extend .j-blue;
+  &:hover {
+    background-color: b-hover($blue);
+  }
+}
+.j-w-green{
+  color:$green;
+}
+.j-green{
+  background-color: $green;
+  color: #fff;
+}
+.j-green-h{
+  @extend .j-green;
+  &:hover {
+    background-color: b-hover($green);
+  }
+}
+.j-yellow{
+  background-color: $yellow;
+  color: #fff;
+}
+.j-yellow-h{
+  @extend .j-yellow;
+  &:hover {
+    background-color: b-hover($yellow);
+  }
+}
+.j-gray{
+  background-color: $gray;
+  color: #333;
+}
+.j-gray-h{
+  @extend .j-gray;
+  &:hover {
+    background-color: b-hover($gray);
+  }
+}
+.j-white{
+  background-color: $white;
+  color: #444;
+}
+.j-w-white{
+  color: $white;
+}
+//*******************button*******************
+
+

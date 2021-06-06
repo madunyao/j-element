@@ -1,5 +1,5 @@
 <template>
-  <div class="sideBar j-black" :class="toogleFlag?'toogle':''">
+  <div class="sideBar" :class="toogleFlag?'toogle':''">
     <i class="fa fa-magnet control-width" @click="toogleFlag=!toogleFlag"></i>
     <div v-for="(row,index) in option.children" :key="index">
         <sideBarRow :option="row"></sideBarRow>
@@ -30,7 +30,6 @@ export default {
 <style  scoped>
   .sideBar {
     width: 200px;
-    min-height: 100vh;
     display: block;
     overflow-x: hidden;
     overflow-y: auto;

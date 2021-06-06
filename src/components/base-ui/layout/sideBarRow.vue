@@ -1,6 +1,6 @@
 <template>
   <div class="sideBarRow" :class="option.check?'check':'nocheck'">
-     <div class="sideBarRowName" @click="clickRow(option)">{{option.name}}</div>
+     <div class="sideBarRowName" @click="clickRow(option)">{{$t(option.name)}}</div>
      <!-- 非叶子结点 -->
       <transition name="fade">
         <div class="sideBarRowList j-gray" v-if="option.check" >
@@ -68,6 +68,7 @@ export default {
    }
  .sideBarRowName{
    padding: 5px 10px;
+   cursor: pointer;
  }
 
 /***************************** */

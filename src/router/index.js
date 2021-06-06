@@ -3,8 +3,9 @@ import Home from '../views/Home.vue';
 import homeRouter from './home';
 
 const routes = [
+  { path: '/', redirect: 'home' },
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
   },

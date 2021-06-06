@@ -1,5 +1,5 @@
 <template>
-  <div class="side">
+  <div class="side j-black">
      <sideBar :option="option"/>
   </div>
 </template>
@@ -14,9 +14,9 @@ export default {
     return {
       option: {
         children: [
-          { name: '1', href: '/' },
-          { name: '2', children: [{ name: '2.1' }, { name: '2.2' }, { name: '2.3' }] },
-          { name: '3', href: 'about' }],
+          { name: 'sidebar.basicElements', href: 'home' },
+          { name: 'sidebar.layout', children: [{ name: 'sidebar.sidebar' }, { name: 'sidebar.card' }, { name: 'sidebar.tab' }] },
+          { name: 'sidebar.modal', href: 'modalView' }],
       },
     };
   },
@@ -26,5 +26,7 @@ export default {
 };
 </script>
 <style  scoped>
-
+.sideBar{
+  min-height: 100vh;
+}
 </style>
