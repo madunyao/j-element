@@ -1,5 +1,6 @@
 import About from '../views/About.vue';
 import ModalView from '../views/modalView.vue';
+import BannerView from '../views/bannerView.vue';
 
 const homeRouter = [
   {
@@ -10,6 +11,10 @@ const homeRouter = [
     path: '/modalView',
     name: 'ModalView',
     component: ModalView,
+  }, {
+    path: '/bannerView',
+    name: 'bannerView',
+    component: BannerView,
   },
 ];
 

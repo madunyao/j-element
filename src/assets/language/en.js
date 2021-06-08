@@ -7,6 +7,7 @@ module.exports = {
     card: 'card',
     tab: 'tab',
     modal: 'modal',
+    banner: 'banner',
   },
   topBar: {
     language: 'language',
