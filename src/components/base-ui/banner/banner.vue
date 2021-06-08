@@ -34,7 +34,7 @@ export default {
       }
     });
     onMounted(() => {
-      console.log(bannerDom.value);
+      // console.log(bannerDom.value);
       const items = bannerDom.value.children;
       if (!items || items.length === 0) {
         return;
