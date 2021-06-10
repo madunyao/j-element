@@ -13,8 +13,6 @@
 </template>
 
 <script type="text/javascript">
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
 import {
   ref, reactive, onMounted, onBeforeMount,
 } from 'vue';
@@ -26,7 +24,6 @@ export default {
   data() {
     return {};
   },
-  components: {},
   setup(props) {
     const bannerDom = ref(null);
     const minTime = 1200;
@@ -54,8 +51,7 @@ export default {
       InterWork = setInterval(() => {
         if (mouseOn) return;
         const index = getActiveNodeIndex(items);
-        domTool.removeClassForList(items, 'active');
-        domTool.removeClassForList(items, 'active-before');
+        domTool.removeClassForList(items, 'active active-before');
         domTool.addClass(items[index], 'active-before');
         domTool.addClass(items[(index + 1) % items.length], 'active');
         mainData.index = (index + 1) % items.length;
@@ -69,16 +65,17 @@ export default {
     }
     function clickAnchorRaw(newIndex) {
       if (mainData.index === newIndex) return;
-      if (InterWork) {
-        clearInterval(InterWork);
+      // if (InterWork) {
+      //   clearInterval(InterWork);
+      // }
+      if (newIndex >= 0) {
+        domTool.removeClassForList(items, 'active');
+        domTool.addClass(items[mainData.index], 'active-before');
+        domTool.addClass(items[newIndex], 'active');
+        setTimeout(() => domTool.removeClassForList(items, 'active-before'), 1050);
+        mainData.index = newIndex;
+        // initInterWork();
       }
-      domTool.removeClassForList(items, 'active');
-      // domTool.removeClassForList(items, 'active-before');
-      domTool.addClass(items[mainData.index], 'active-before');
-      domTool.addClass(items[newIndex], 'active');
-      setTimeout(() => domTool.removeClassForList(items, 'active-before'), 1050);
-      mainData.index = newIndex;
-      initInterWork();
     }
     function clickAnchor(newIndex) {
       // 节流
@@ -126,7 +123,7 @@ export default {
     width: 100%;
     height: 100%;
     transform: translate(100%,0);
-    transition:transform 1s;
+    transition:transform 0s;
     img{
       width: 100%;
     }
@@ -134,12 +131,14 @@ export default {
   .active{
       opacity:1;
       transform: translate(0,0);
-      z-index:2;
+      z-index:3;
+      transition:transform 1s;
   }
   .active-before{
       opacity:1;
       transform: translate(-100%,0);
       z-index:2;
+      transition:transform 1s;
   }
   .banner-anchor-wrap{
     width: 100%;

@@ -1,14 +1,28 @@
-// ############################commonTool################################
+// ############################domTool################################
 function hasClass(obj, cls) {
   return obj.className.match(new RegExp(`(\\s|^)${cls}(\\s|$)`));
 }
 function addClass(obj, cls) {
-  if (!domTool.hasClass(obj, cls)) obj.className += ` ${cls}`;
+  cls = cls.split(' ');
+  for (const clss of cls) {
+    if (!domTool.hasClass(obj, clss)) {
+      obj.className = `${obj.className.trim()} ${clss}`;
+    }
+  }
 }
 function removeClass(obj, cls) {
-  if (hasClass(obj, cls)) {
-    const reg = new RegExp(`(\\s|^)${cls}(\\s|$)`);
-    obj.className = obj.className.replace(reg, ' ');
+  cls = cls.split(' ');
+  for (const clss of cls) {
+    const reg = new RegExp(`(\\s|^)${clss}(\\s|$)`);
+    if (domTool.hasClass(obj, clss)) {
+      obj.className = obj.className.replace(reg, ' ');
+    }
+  }
+}
+function replaceClass(obj, cls, newCls) {
+  const reg = new RegExp(`(\\s|^)${cls}(\\s|$)`);
+  if (domTool.hasClass(obj, cls)) {
+    obj.className = obj.className.replace(reg, newCls);
   }
 }
 function removeClassForList(list, cls) {
@@ -18,10 +32,10 @@ function removeClassForList(list, cls) {
   }
 }
 function toggleClass(obj, cls) {
-  if (hasClass(obj, cls)) {
-    removeClass(obj, cls);
+  if (domTool.hasClass(obj, cls)) {
+    domTool.removeClass(obj, cls);
   } else {
-    addClass(obj, cls);
+    domTool.addClass(obj, cls);
   }
 }
 // ############################commonTool################################
@@ -79,7 +93,7 @@ function throttleIns(fn, delay, ...para) {
 
 // ############################--------################################
 const domTool = {
-  hasClass, addClass, removeClass, removeClassForList, toggleClass,
+  hasClass, addClass, removeClass, removeClassForList, toggleClass, replaceClass,
 };
 const commonTool = {
   debounce, throttle, throttleIns,
