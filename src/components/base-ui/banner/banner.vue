@@ -18,7 +18,7 @@
 import {
   ref, reactive, onMounted, onBeforeMount,
 } from 'vue';
-import { domTool } from '@/assets/js/utils';
+import { domTool, commonTool } from '@/assets/js/utils';
 
 export default {
   name: 'banner',
@@ -29,6 +29,7 @@ export default {
   components: {},
   setup(props) {
     const bannerDom = ref(null);
+    const minTime = 1200;
     let InterWork = null;
     let items = [];
     let mouseOn = false;
@@ -66,17 +67,22 @@ export default {
     function mouseLeave() {
       mouseOn = false;
     }
-    function clickAnchor(newIndex) {
+    function clickAnchorRaw(newIndex) {
+      if (mainData.index === newIndex) return;
       if (InterWork) {
         clearInterval(InterWork);
       }
       domTool.removeClassForList(items, 'active');
-      domTool.removeClassForList(items, 'active-before');
+      // domTool.removeClassForList(items, 'active-before');
       domTool.addClass(items[mainData.index], 'active-before');
       domTool.addClass(items[newIndex], 'active');
       setTimeout(() => domTool.removeClassForList(items, 'active-before'), 1050);
       mainData.index = newIndex;
       initInterWork();
+    }
+    function clickAnchor(newIndex) {
+      // 节流
+      commonTool.throttleIns(clickAnchorRaw, minTime, newIndex);
     }
     function nextPic() {
       clickAnchor((mainData.index + 1) % items.length);
