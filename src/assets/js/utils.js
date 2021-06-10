@@ -31,6 +31,12 @@ function removeClassForList(list, cls) {
     domTool.removeClass(obj, cls);
   }
 }
+function addClassForList(list, cls) {
+  for (let i = 0; i < list.length; i++) {
+    const obj = list[i];
+    domTool.addClass(obj, cls);
+  }
+}
 function toggleClass(obj, cls) {
   if (domTool.hasClass(obj, cls)) {
     domTool.removeClass(obj, cls);
@@ -38,6 +44,7 @@ function toggleClass(obj, cls) {
     domTool.addClass(obj, cls);
   }
 }
+
 // ############################commonTool################################
 /*
 * fn [function] 需要防抖的函数
@@ -90,13 +97,20 @@ function throttleIns(fn, delay, ...para) {
     fn.valid = true;
   }, delay);
 }
-
+function getObjByKey(list, keyName, keyVal) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i][keyName] === keyVal) {
+      return list[i];
+    }
+  }
+  return null;
+}
 // ############################--------################################
 const domTool = {
-  hasClass, addClass, removeClass, removeClassForList, toggleClass, replaceClass,
+  hasClass, addClass, removeClass, removeClassForList, addClassForList, toggleClass, replaceClass,
 };
 const commonTool = {
-  debounce, throttle, throttleIns,
+  debounce, throttle, throttleIns, getObjByKey,
 };
 
 // eslint-disable-next-line import/prefer-default-export

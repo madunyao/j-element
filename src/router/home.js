@@ -1,6 +1,7 @@
 import About from '../views/About.vue';
 import ModalView from '../views/modalView.vue';
 import BannerView from '../views/bannerView.vue';
+import TabDivView from '../views/tabDivView.vue';
 
 const homeRouter = [
   {
@@ -15,6 +16,10 @@ const homeRouter = [
     path: '/bannerView',
     name: 'bannerView',
     component: BannerView,
+  }, {
+    path: '/tabDivView',
+    name: 'tabDivView',
+    component: TabDivView,
   },
 ];
 
