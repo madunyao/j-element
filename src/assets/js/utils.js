@@ -10,6 +10,12 @@ function removeClass(obj, cls) {
     obj.className = obj.className.replace(reg, ' ');
   }
 }
+function removeClassForList(list, cls) {
+  for (let i = 0; i < list.length; i++) {
+    const obj = list[i];
+    domTool.removeClass(obj, cls);
+  }
+}
 function toggleClass(obj, cls) {
   if (hasClass(obj, cls)) {
     removeClass(obj, cls);
@@ -19,7 +25,7 @@ function toggleClass(obj, cls) {
 }
 
 const domTool = {
-  hasClass, addClass, removeClass, toggleClass,
+  hasClass, addClass, removeClass, removeClassForList, toggleClass,
 };
 
 // eslint-disable-next-line import/prefer-default-export
