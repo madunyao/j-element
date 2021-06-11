@@ -4,6 +4,7 @@ module.exports = {
     basicElements: 'basic elements',
     layout: 'layout',
     sidebar: 'sidebar',
+    navbar: 'navigation',
     card: 'card',
     tab: 'tab',
     modal: 'modal',

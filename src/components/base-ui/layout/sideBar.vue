@@ -1,8 +1,10 @@
 <template>
   <div class="sideBar" :class="toogleFlag?'toogle':''">
     <i class="fa fa-magnet control-width" @click="toogleFlag=!toogleFlag"></i>
-    <div v-for="(row,index) in option.children" :key="index">
+    <div class="content">
+      <div v-for="(row,index) in option.children" :key="index">
         <sideBarRow :option="row"></sideBarRow>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +40,10 @@ export default {
     padding-top: 30px;
     transition:width .7s;
   }
+  .sideBar .content{
+    min-width: 200px;
+    margin-top: 10px;
+  }
   .sideBar.toogle{
     width: 35px;
   }
@@ -46,9 +52,10 @@ export default {
     top: 10px;
     right: 10px;
     font-size: 18px;
+    cursor: pointer;
   }
   i.control-width:hover{
-    color: #eee;
+    color: #1bbc9b;
   }
 
 </style>

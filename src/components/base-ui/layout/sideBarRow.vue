@@ -1,6 +1,9 @@
 <template>
   <div class="sideBarRow" :class="option.check?'check':'nocheck'">
-     <div class="sideBarRowName" @click="clickRow(option)">{{$t(option.name)}}</div>
+     <div class="sideBarRowName" @click="clickRow(option)">
+        <i class="fa fa-magnet" style="margin:0 5px;"></i>
+        {{$t(option.name)}}
+     </div>
      <!-- 非叶子结点 -->
       <transition name="fade">
         <div class="sideBarRowList j-gray" v-if="option.check" >
@@ -59,18 +62,22 @@ export default {
 };
 </script>
 
-<style scoped>
- .check>.sideBarRowList{display: block;}
- .nocheck>.sideBarRowList{display: none;}
- .sideBarRow{
-   font-size: 14px;
-   border-bottom: 1px solid #fff;
-   }
- .sideBarRowName{
-   padding: 5px 10px;
-   cursor: pointer;
- }
-
+<style lang="scss" scoped>
+  .check>.sideBarRowList{display: block;}
+  .nocheck>.sideBarRowList{display: none;}
+  .sideBarRow{
+    font-size: 14px;
+    border-bottom: 1px solid #fff;
+  }
+  .sideBarRowName{
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .sideBarRowName:hover{
+    .fa{
+      color: #1bbc9b;
+    }
+  }
 /***************************** */
 .slide-fade-enter-active {
   transition: all .3s ease;
