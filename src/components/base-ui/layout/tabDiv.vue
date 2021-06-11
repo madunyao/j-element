@@ -2,7 +2,7 @@
   <div class="tabDiv" ref="tabDivDom">
     <div class="title-list">
       <div v-for="(rsp,key) in list" :key="key"
-           class="tab-title" :class="curId==rsp.id?'active':''">
+           class="tab-title" :class="curId==rsp.id?activeClass:''">
         <div @click="showDiv(rsp.id)"><a>{{rsp.name}}</a></div>
       </div>
     </div>
@@ -29,10 +29,14 @@ export default {
   components: {},
   setup(props) {
     const tabDivDom = ref(null);
+    const activeClass = ref('active');
     const list = reactive([]);
     const mainData = {
       contents: [],
     };
+    if (props.option.color) {
+      activeClass.value += ` ${props.option.color}`;
+    }
     const curId = ref(null);
     function showDiv(id) {
       const cur = commonTool.getObjByKey(mainData.contents, 'id', id);
@@ -57,6 +61,7 @@ export default {
       tabDivDom,
       list,
       curId,
+      activeClass,
     };
   },
 };
@@ -76,14 +81,27 @@ export default {
     display: flex;
     margin:  0 10px;
     border-bottom: 1px solid $gray;
-    .active{
-      border-color: $green !important;
+    .tab-title.active{
+      border-color: $green;
     }
     .tab-title{
-      border-top: 2px solid transparent;
+      border-top: 2px solid;
+      border-color: transparent;
       font-size: 1.5rem;
       padding: 5px 15px;
       a{cursor: pointer;}
+    }
+    .tab-title.active.green{
+      border-color: $green;
+    }
+    .tab-title.active.yellow{
+      border-color: $yellow;
+    }
+    .tab-title.active.blue{
+      border-color: $blue;
+    }
+    .tab-title.active.red{
+      border-color: $red;
     }
   }
 </style>
