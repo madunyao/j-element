@@ -1,8 +1,9 @@
 <template>
   <div class="tabDiv" ref="tabDivDom">
     <div class="title-list">
-      <div v-for="(rsp,key) in list" :key="key">
-        <div @click="showDiv(rsp.id)">{{rsp.name}}</div>
+      <div v-for="(rsp,key) in list" :key="key"
+           class="tab-title" :class="curId==rsp.id?'active':''">
+        <div @click="showDiv(rsp.id)"><a>{{rsp.name}}</a></div>
       </div>
     </div>
     <div class="content" >
@@ -32,17 +33,19 @@ export default {
     const mainData = {
       contents: [],
     };
+    const curId = ref(null);
     function showDiv(id) {
       const cur = commonTool.getObjByKey(mainData.contents, 'id', id);
       domTool.removeClassForList(mainData.contents, 'active');
       // eslint-disable-next-line no-unused-expressions
       cur ? domTool.addClass(cur, 'active') : null;
+      curId.value = id;
     }
     function setList(doms) {
       for (let i = 0; i < doms.length; i++) {
-        list.push({ id: doms[i].id, name: 'name' });
+        list.push({ id: doms[i].id, name: doms[i].getAttribute('name') });
       }
-      console.log(list);
+      // console.log(doms);
     }
     onMounted(() => {
       mainData.contents = tabDivDom.value.querySelectorAll('div.tab-item');
@@ -53,18 +56,34 @@ export default {
       showDiv,
       tabDivDom,
       list,
+      curId,
     };
   },
 };
 </script>
 
 <style lang="scss">
+  @import "@/assets/scss/color.scss";
   .tabDiv .content{
     .active{
       display: block !important;
     }
     .tab-item{
       display: none;
+    }
+  }
+  .tabDiv .title-list{
+    display: flex;
+    margin:  0 10px;
+    border-bottom: 1px solid $gray;
+    .active{
+      border-color: $green !important;
+    }
+    .tab-title{
+      border-top: 2px solid transparent;
+      font-size: 1.5rem;
+      padding: 5px 15px;
+      a{cursor: pointer;}
     }
   }
 </style>

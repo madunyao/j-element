@@ -1,13 +1,5 @@
 //*******************coclor*******************
-$balck :#3d3d3d;
-$balck-d :#1f1f1f;
-$red :#d64635;
-$blue : #1875e7;
-$green :#1bbc9b;
-$yellow :#f8a41d;
-$gray :#e5e5e5;
-$white : #fff;
-$orange : #f60;
+@import "color.scss";
 
 @function b-hover($n) {
   @return darken($n, 10%);
@@ -101,3 +93,5 @@ $orange : #f60;
 //*******************button*******************
 
 
+
+//*******************Tab*******************

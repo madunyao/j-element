@@ -1,10 +1,16 @@
 <template>
   <div class="tabDivView">
-    <TabDiv ref="tabRef" :option="optionData">
+    <TabDiv ref="tabRef" :option="optionData" style="margin-top:10px">
         <template v-slot >
-          <div class="tab-item active" id="a" name="A">aaaa</div>
-          <div class="tab-item" id="b" name="B">bbbb</div>
-          <div class="tab-item" id="c" name="C">cccc</div>
+          <div class="tab-item active" id="a" name="Angular">
+            <p>Angular 是一个应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用。</p>
+          </div>
+          <div class="tab-item" id="b" name="Vue">
+            <p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。 </p>
+          </div>
+          <div class="tab-item" id="c" name="React">
+            <p>React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库。</p>
+          </div>
         </template>
     </TabDiv>
   </div>
@@ -35,5 +41,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tabDivView{
+  p{
+    margin: 20px;
+    text-align: left;
+  }
+}
 
 </style>
