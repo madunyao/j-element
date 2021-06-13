@@ -55,6 +55,7 @@ export default {
   }
   .topBarItem{
     line-height: 40px;
-    margin: 0 40px;
+    margin: 0;
+    padding: 0 10px;
   }
 </style>

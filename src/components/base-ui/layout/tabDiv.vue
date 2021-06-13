@@ -79,6 +79,7 @@ export default {
   }
   .tabDiv .title-list{
     display: flex;
+    flex-wrap: wrap;
     margin:  0 10px;
     border-bottom: 1px solid $gray;
     .tab-title.active{

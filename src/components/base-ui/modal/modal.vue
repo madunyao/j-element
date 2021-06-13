@@ -1,5 +1,7 @@
 <template>
-<div class="modal-wrap" v-show="showFlag">
+ <transition name="fade">
+<div class="modal-wrap" @click.self="closeModal" v-show="showFlag"
+     ref="modalDom" :class="option.side">
   <div class="modal">
       <div class="modal-top">
         <a class="fa fa-times" href="" @click.prevent="closeModal"></a>
@@ -13,12 +15,14 @@
       </div>
   </div>
 </div>
+ </transition>
 </template>
 
 <script type="text/javascript">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue';
 import { ref } from 'vue';
+import { domTool } from '@/assets/js/utils';
 
 export default {
   name: 'modal',
@@ -32,15 +36,25 @@ export default {
   },
   setup(props) {
     const showFlag = ref(false);
+    const modalDom = ref(modalDom);
     function closeModal() {
+      // 显示滚动条
+      const html = document.getElementsByTagName('html')[0];
+      domTool.removeClass(html, 'hide-overflow');
       showFlag.value = false;
     }
     function openModal() {
+      // 隐藏滚动条
+      const html = document.getElementsByTagName('html')[0];
+      domTool.addClass(html, 'hide-overflow');
       showFlag.value = true;
     }
     function submitModal() {
       if (props.option.submit) {
         props.option.submit();
+      }
+      if (modalDom.value && modalDom.value.submitModal) {
+        modalDom.value.submitModal();
       }
       showFlag.value = false;
     }
@@ -48,6 +62,7 @@ export default {
       closeModal,
       submitModal,
       openModal,
+      modalDom,
       showFlag,
     };
   },
@@ -55,6 +70,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+html{overflow-y: hidden;}
 .modal-wrap{
     position: fixed;
     display: flex;
@@ -75,6 +91,22 @@ export default {
       margin-bottom: 10%;
       position: relative;
     }
+}
+.modal-wrap.right{
+  justify-content: flex-end;
+  .modal{
+    height: 100%;
+    margin: 0;
+  }
+}
+.modal-wrap.top{
+  justify-content: center;
+  align-items: flex-start;
+  .modal{
+    min-height: 40px;
+    margin: 0;
+    min-width:100%
+  }
 }
 .modal-wrap .modal .modal-content{
   padding: 5px;
