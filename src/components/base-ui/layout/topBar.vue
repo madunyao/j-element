@@ -52,10 +52,11 @@ export default {
     flex-wrap: nowrap;
     flex-direction: row;
     font-size: 16px;
+    padding: 0 10px;
   }
   .topBarItem{
     line-height: 40px;
     margin: 0;
-    padding: 0 10px;
+    /* padding: 0 10px; */
   }
 </style>

@@ -2,6 +2,7 @@ import About from '../views/About.vue';
 import ModalView from '../views/modalView.vue';
 import BannerView from '../views/bannerView.vue';
 import TabDivView from '../views/tabDivView.vue';
+import NavView from '../views/navView.vue';
 
 const homeRouter = [
   {
@@ -20,6 +21,10 @@ const homeRouter = [
     path: '/tabDivView',
     name: 'tabDivView',
     component: TabDivView,
+  }, {
+    path: '/navView',
+    name: 'navView',
+    component: NavView,
   },
 ];
 
