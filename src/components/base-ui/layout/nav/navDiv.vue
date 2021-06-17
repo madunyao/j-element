@@ -21,8 +21,8 @@ export default {
   setup() {
     const navDivRef = ref(null);
     onMounted(() => {
-      console.log('navDivRef:');
-      console.log(navDivRef);
+      // console.log('navDivRef:');
+      // console.log(navDivRef);
     });
     return {
       navDivRef,

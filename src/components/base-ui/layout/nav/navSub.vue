@@ -3,7 +3,7 @@
     <div class="navSubName j-blue-h" @click="option.showItem=!option.showItem;">
       {{option.name}}
     </div>
-    <div class="itemsWrap" :class="option.showItem?'':'hide'" @mouseleave="option.showItem=false">
+    <div class="itemsWrap" :class="option.showItem?'':'hide'" @mouseleave="hideShow()">
       <slot></slot>
     </div>
   </div>
@@ -29,8 +29,6 @@ export default {
     option.value.showItem = false;
     const itemHeight = 25;
     onMounted(() => {
-      console.log('navSubRef:');
-      console.log(navSubRef);
       option.value.name = navSubRef.value.getAttribute('name');
       const childrenNum = navSubRef.value.querySelectorAll('.navItem') ? navSubRef.value.querySelectorAll('.navItem').length : 0;
       if (childrenNum > 0) {
@@ -38,9 +36,25 @@ export default {
         itemsWrap.style.maxHeight = `${itemHeight * childrenNum + 2}px`;
       }
     });
+    function hideShow() {
+      const navItemList = navSubRef.value.querySelectorAll('.navItemList');
+      if (navItemList && navItemList.length > 0) {
+        for (const item of navItemList) {
+          item.hideSelf();
+        }
+      }
+      const navItems = navSubRef.value.querySelectorAll('.navItem');
+      if (navItems && navItems.length > 0) {
+        for (const item of navItems) {
+          item.initSelf();
+        }
+      }
+      option.value.showItem = false;
+    }
     return {
       navSubRef,
       option,
+      hideShow,
     };
   },
 };
@@ -54,10 +68,13 @@ export default {
       width: 100%;
       border:1px solid $blue;
       overflow-y: hidden;
-      transition:max-height .5s;
+      // transition:max-height .5s;
+      transition-property: max-height, border-color;
+      transition-duration:.5s, .6s;
     }
     .itemsWrap.hide{
       max-height: 0 !important;
+      border-color : transparent;
     }
   }
   .navSub .navSubName{

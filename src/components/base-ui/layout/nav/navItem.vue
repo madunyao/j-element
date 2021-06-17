@@ -1,6 +1,8 @@
 <template>
-  <div class="navItem">
+  <div class="navItem" ref="navItemRef" @click="clickSelf">
     <slot></slot>
+    <i v-show="showrightArrow" style="float:right;padding:0 5px;"
+    :class="showrightArrow=='1'?'fa fa-chevron-right':'fa fa-chevron-right reverse'"></i>
   </div>
 </template>
 
@@ -18,14 +20,32 @@ export default {
   },
   components: {
   },
-  setup() {
+  setup(props, context) {
     const navItemRef = ref(null);
+    const showrightArrow = ref(0);
     onMounted(() => {
-      console.log('navItemRef:');
-      console.log(navItemRef);
+      if (navItemRef.value.querySelectorAll('.navItemList').length > 0) {
+        showrightArrow.value = 1;
+      }
+      navItemRef.value.initSelf = initSelf;
     });
+    function clickSelf() {
+      if (navItemRef.value.children && navItemRef.value.children.length > 0
+      && navItemRef.value.children[0].toogleShow) {
+        navItemRef.value.children[0].toogleShow();
+        showrightArrow.value = navItemRef.value.children[0].getShowFlag() ? 2 : 1;
+      }
+      console.log(context);
+    }
+    function initSelf() {
+      if (navItemRef.value.querySelectorAll('.navItemList').length > 0) {
+        showrightArrow.value = 1;
+      } else {
+        showrightArrow.value = 0;
+      }
+    }
     return {
-      navItemRef,
+      navItemRef, clickSelf, showrightArrow,
     };
   },
 };
@@ -37,10 +57,18 @@ export default {
     background-color: #fff;
     cursor: pointer;
     padding: 5px;
+    text-align: left;
+    min-width: 100px;
     line-height: 15px;
     &:hover{
       background-color: $gray;
     }
 
   }
+  .fa{
+    transition: transform .3s;
+  }
+  .reverse{
+      transform: rotate(180deg);
+    }
 </style>
