@@ -9,6 +9,7 @@ module.exports = {
     tab: '选项卡',
     modal: '模态框',
     banner: '轮播图',
+    drag: '拖拽',
   },
   topBar: {
     language: '语言',

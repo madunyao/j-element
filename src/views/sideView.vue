@@ -15,7 +15,7 @@ export default {
       option: {
         children: [
           { name: 'sidebar.basicElements', href: 'home' },
-          { name: 'sidebar.layout', children: [{ name: 'sidebar.navbar', href: 'navView' }, { name: 'sidebar.card' }, { name: 'sidebar.tab', href: 'tabDivView' }] },
+          { name: 'sidebar.layout', children: [{ name: 'sidebar.navbar', href: 'navView' }, { name: 'sidebar.drag', href: 'dragView' }, { name: 'sidebar.tab', href: 'tabDivView' }] },
           { name: 'sidebar.modal', href: 'modalView' },
           { name: 'sidebar.banner', href: 'bannerView' }],
       },

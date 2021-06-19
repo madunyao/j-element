@@ -9,6 +9,7 @@ module.exports = {
     tab: 'tab',
     modal: 'modal',
     banner: 'banner',
+    drag: 'drag',
   },
   topBar: {
     language: 'language',
