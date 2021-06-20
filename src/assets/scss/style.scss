@@ -90,6 +90,13 @@
 .j-w-white{
   color: $white;
 }
+.j-white-h{
+  @extend .j-white;
+  border: 1px solid $gray-d;
+  &:hover {
+    background-color: b-hover($white);
+  }
+}
 //*******************button*******************
 
 
