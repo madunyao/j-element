@@ -8,7 +8,7 @@
 <script type="text/javascript">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 export default {
 
@@ -19,7 +19,8 @@ export default {
     };
   },
   components: {},
-  setup() {
+  props: ['curVal', 'maxVal'],
+  setup(props) {
     const maxValue = ref(100);
     const curValue = ref(0);
     const myRef = ref(null);
@@ -55,6 +56,28 @@ export default {
         }
       };
     }
+    // 初始化游标的位置
+    function initPosition() {
+      const cursor = myRef.value.querySelector('.cursor');
+      let curValueTemp = props.curVal;
+      let maxValueTemp = props.maxVal;
+      if (cursor && curValueTemp && maxValueTemp) {
+        const maxLength = cursor.parentNode.offsetWidth - cursor.offsetWidth;
+        curValueTemp = parseInt(curValueTemp, 10);
+        maxValueTemp = parseInt(maxValueTemp, 10);
+        maxValueTemp = maxValueTemp > curValueTemp ? maxValueTemp : curValueTemp;
+        cursor.style.left = `${maxLength * (curValueTemp / maxValueTemp)}px`;
+        curValue.value = curValueTemp;
+        maxValue.value = maxValueTemp;
+      }
+    }
+    function getCurValue() {
+      return curValue;
+    }
+    onMounted(() => {
+      initPosition();
+      myRef.value.getCurValue = getCurValue;
+    });
 
     return {
       myRef, mousedown, maxValue, curValue,
