@@ -10,6 +10,10 @@
       <div>调节：</div>
       <Slider curVal="50" maxVal="100"></Slider>
     </div>
+    <div class="row">
+      <div>下拉框：</div>
+      <BaseSelect :option="optForSelect" :val="optForSelect.cur" class="BaseSelect"></BaseSelect>
+    </div>
 
   </div>
 </template>
@@ -19,6 +23,7 @@
 // import sideBar from '@/components/base-ui/layout/sideBar.vue';
 import { ref, watchEffect, reactive } from 'vue';
 import Slider from '../components/base-ui/mini/slider/slider.vue';
+import BaseSelect from '../components/base-ui/select/baseSelect.vue';
 
 export default {
   name: 'Home',
@@ -27,12 +32,17 @@ export default {
       show: true,
     };
   },
-  components: { Slider },
+  components: { Slider, BaseSelect },
   setup() {
     const colors = ref(['j-red-h', 'j-blue-h', 'j-yellow-h', 'j-green-h', 'j-gray-h', 'j-white-h']);
     const opt1 = reactive({ num: 0 });
+    const optForSelect = reactive({
+      cur: 'ch',
+      list: [{ name: '中国', val: 'ch' }, { name: '美国', val: 'us' },
+        { name: '英国', val: 'en' }, { name: '日本', val: 'jpa' }],
+    });
     watchEffect(() => console.log(opt1.curval));
-    return { colors, opt1 };
+    return { colors, opt1, optForSelect };
   },
 };
 </script>
@@ -42,6 +52,9 @@ export default {
     justify-content: flex-start;
     align-items: center;
     padding: 10px
+  }
+  .BaseSelect{
+    width: 150px;;
   }
 
 </style>

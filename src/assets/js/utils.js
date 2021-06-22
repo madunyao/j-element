@@ -113,6 +113,15 @@ function S4() {
 function guid() {
   return (`${S4() + S4()}-${S4()}-${S4()}-${S4()}-${S4()}${S4()}${S4()}`);
 }
+// ############################arrayTool################################
+function getValByKey(list, keyName, valName, key) {
+  if (!list || list.length === 0) {
+    return null;
+  }
+  const res = list.find((item) => item[keyName] === key);
+  return res ? res[valName] : null;
+}
+
 // ############################--------################################
 const domTool = {
   hasClass, addClass, removeClass, removeClassForList, addClassForList, toggleClass, replaceClass,
@@ -120,6 +129,9 @@ const domTool = {
 const commonTool = {
   debounce, throttle, throttleIns, getObjByKey, guid,
 };
+const arrayTool = {
+  getValByKey,
+};
 
 // eslint-disable-next-line import/prefer-default-export
-export { domTool, commonTool };
+export { domTool, commonTool, arrayTool };
