@@ -103,6 +103,7 @@ export default {
       top: 2.1em;
       border: 1px solid #eee;
       padding: 5px;
+      background-color: #fff;
       input{
         height: 2em;
         border: 2px solid #999;

@@ -1,6 +1,6 @@
 <template>
   <div class="slider" ref="myRef">
-     <a class="cursor" @mousedown="mousedown" ></a>
+     <a class="cursor" @mousedown.prevent="mousedown" ></a>
   </div>
   <span>({{curValue+'/'+maxValue}})</span>
 </template>
