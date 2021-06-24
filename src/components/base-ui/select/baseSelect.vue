@@ -31,9 +31,9 @@ export default {
 
     };
   },
-  props: ['option', 'val'],
+  props: ['option', 'val', 'modelValue'],
   components: {},
-  setup(props) {
+  setup(props, context) {
     const curVal = ref({ val: null, name: null });
     const toogleFlag = ref(false);
     const keyWord = ref(null);
@@ -49,6 +49,7 @@ export default {
       curVal.value = item;
       myRef.value.val = item.val;
       toogleFlag.value = false;
+      context.emit('update:val', item.val);
     }
     function filterItem(kw) {
       if (!kw) {
@@ -104,6 +105,7 @@ export default {
       border: 1px solid #eee;
       padding: 5px;
       background-color: #fff;
+      z-index: 1000;
       input{
         height: 2em;
         border: 2px solid #999;

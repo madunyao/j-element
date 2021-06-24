@@ -18,6 +18,7 @@ a{ text-decoration:none; }
 .no-margin{margin:0}
 .one-row-show{overflow: hidden;  text-overflow: ellipsis; white-space: nowrap;}
 
+/* input{ outline: none} */
 /***************************************/
 /* 隐藏滚动轴 */
 .hide-overflow{overflow:hidden;}
