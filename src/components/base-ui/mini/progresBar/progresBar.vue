@@ -25,8 +25,8 @@ export default {
     const myref = ref(null);
     const picNum = ref(0);
     onMounted(() => {
-      console.log(myref.value.offsetWidth);
-      console.log(myref.value.querySelector('img').offsetWidth);
+      // console.log(myref.value.offsetWidth);
+      // console.log(myref.value.querySelector('img').offsetWidth);
       const num = Math.trunc(myref.value.offsetWidth / myref.value.querySelector('img').offsetWidth);
       picNum.value = num - 1 > 0 ? num - 1 : 0;
     });

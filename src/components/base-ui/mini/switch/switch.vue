@@ -24,11 +24,11 @@ export default {
   },
   components: { },
   props: ['modelValue'],
-  setup(props) {
+  setup() {
     const uuid = ref(commonTool.guid());
     const myRef = ref(null);
     onMounted(() => {
-      console.log(props.modelValue);
+      // console.log(props.modelValue);
     });
     return { uuid, myRef };
   },

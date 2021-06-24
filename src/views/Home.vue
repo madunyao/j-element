@@ -58,7 +58,7 @@ export default {
         { name: '英国', val: 'UK' }, { name: '日本', val: 'JP' }],
     });
     const switchVal = ref(false);
-    watchEffect(() => console.log(opt1.curval));
+    watchEffect(() => (opt1.curval ? console.log(opt1.curval) : ''));
     const progresBarVal = ref(60);
     return {
       colors, opt1, optForSelect, switchVal, progresBarVal,
