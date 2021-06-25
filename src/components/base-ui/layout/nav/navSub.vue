@@ -1,6 +1,7 @@
 <template>
   <div class="navSub" ref="navSubRef">
-    <div class="navSubName j-blue-h" @click="option.showItem=!option.showItem;">
+    <div class="navSubName j-blue-h"
+    @click="option.childrenNum?option.showItem=!option.showItem:'';">
       {{option.name}}
     </div>
     <div class="itemsWrap" :class="option.showItem?'':'hide'" @mouseleave="hideShow()">
@@ -32,6 +33,7 @@ export default {
       option.value.name = navSubRef.value.getAttribute('name');
       const childrenNum = navSubRef.value.querySelectorAll('.navItem') ? navSubRef.value.querySelectorAll('.navItem').length : 0;
       if (childrenNum > 0) {
+        option.value.childrenNum = childrenNum;
         const itemsWrap = navSubRef.value.querySelector('.itemsWrap');
         itemsWrap.style.maxHeight = `${itemHeight * childrenNum + 2}px`;
       }

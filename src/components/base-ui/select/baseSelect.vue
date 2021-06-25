@@ -84,6 +84,7 @@ export default {
     position: relative;
     font-size: 14px;;
     .bs-top{
+      width: 100%;
       padding: 0 10px;
       padding-right: 15px;
       border: 1px solid #eee;
@@ -101,6 +102,7 @@ export default {
     }
     .bs-bottom{
       position:absolute;
+      width: 100%;
       top: 2.1em;
       border: 1px solid #eee;
       padding: 5px;
@@ -108,6 +110,7 @@ export default {
       z-index: 1000;
       input{
         height: 2em;
+        width: 100%;
         border: 2px solid #999;
         padding: 2px 5px;
         margin: 5px 0;

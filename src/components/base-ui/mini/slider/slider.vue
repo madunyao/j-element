@@ -87,10 +87,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/color.scss";
   .slider{
     min-height: 1rem;
     min-width: 100px;
-    background-color: turquoise;
+    background-color: $blue;
     position: relative;
     margin: 10px 5px;
     .cursor{
