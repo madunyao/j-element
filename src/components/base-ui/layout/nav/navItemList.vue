@@ -29,10 +29,10 @@ export default {
     });
     function setPosition() {
       const left = navItemListRef.value.parentNode.offsetWidth;
-      const top = navItemListRef.value.parentNode.offsetTop;
+      // const top = navItemListRef.value.parentNode.offsetTop;
       const rectObject = navItemListRef.value.parentNode.getBoundingClientRect();
+      navItemListRef.value.style.top = `${rectObject.top}px`;
       navItemListRef.value.style.left = `${left + rectObject.left + 1}px`;
-      navItemListRef.value.style.top = `${top}px`;
     }
     function toogleShow() {
       setPosition();
@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
   @import "@/assets/scss/color.scss";
   .navItemList{
-    position:absolute;
+    position:fixed;
     margin:0;
     border:1px solid $blue;
     overflow-y: hidden;

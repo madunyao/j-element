@@ -1,5 +1,5 @@
 <template>
-  <div class="navItem" ref="navItemRef" @click="clickSelf">
+  <div class="navItem" ref="navItemRef" @click.prevent.self ="clickSelf">
     <slot></slot>
     <i v-show="showrightArrow" style="float:right;padding:0 5px;"
     :class="showrightArrow=='1'?'fa fa-chevron-right':'fa fa-chevron-right reverse'"></i>
@@ -20,7 +20,7 @@ export default {
   },
   components: {
   },
-  setup(props, context) {
+  setup() {
     const navItemRef = ref(null);
     const showrightArrow = ref(0);
     onMounted(() => {
@@ -34,8 +34,9 @@ export default {
       && navItemRef.value.children[0].toogleShow) {
         navItemRef.value.children[0].toogleShow();
         showrightArrow.value = navItemRef.value.children[0].getShowFlag() ? 2 : 1;
+      } else if (navItemRef.value.parentNode.hideSelf) {
+        navItemRef.value.parentNode.hideSelf();
       }
-      console.log(context);
     }
     function initSelf() {
       if (navItemRef.value.querySelectorAll('.navItemList').length > 0) {
@@ -58,7 +59,7 @@ export default {
     cursor: pointer;
     padding: 5px;
     text-align: left;
-    min-width: 100px;
+    min-width: 80px;
     line-height: 15px;
     &:hover{
       background-color: $gray;
