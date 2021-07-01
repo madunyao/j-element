@@ -1,5 +1,5 @@
 <template>
-  <div class="navSub" ref="navSubRef">
+  <div class="navSub" ref="navSubRef" @mouseleave="hideShow()">
     <div class="navSubName j-blue-h"
     @click="showChildren">
       {{option.name}}
