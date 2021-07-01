@@ -26,6 +26,18 @@
       <ProgresBar :val="progresBarVal" style="width:200px;"></ProgresBar>
       <input type="number" number v-model="progresBarVal">
     </div>
+    <div class="row">
+      <div>提示消息：</div>
+      <button class="j-green-h" @click="showToast()">
+        成功
+      </button>
+      <button class="j-yellow-h" @click="showWarn()">
+        警告
+      </button>
+      <button class="j-red-h" @click="showError()">
+        失败
+      </button>
+    </div>
 
   </div>
 </template>
@@ -34,10 +46,11 @@
 // @ is an alias to /src
 // import sideBar from '@/components/base-ui/layout/sideBar.vue';
 import { ref, watchEffect, reactive } from 'vue';
+import Switch from '../components/base-ui/mini/switch/switch.vue';
 import Slider from '../components/base-ui/mini/slider/slider.vue';
 import BaseSelect from '../components/base-ui/select/baseSelect.vue';
-import Switch from '../components/base-ui/mini/switch/switch.vue';
 import ProgresBar from '../components/base-ui/mini/progresBar/progresBar.vue';
+import ToastUtiles from '../components/base-ui/mini/toast/toast';
 
 export default {
   name: 'Home',
@@ -60,8 +73,24 @@ export default {
     const switchVal = ref(false);
     watchEffect(() => (opt1.curval ? console.log(opt1.curval) : ''));
     const progresBarVal = ref(60);
+    function showToast() {
+      ToastUtiles.toast('操作成功！');
+    }
+    function showWarn() {
+      ToastUtiles.warn('操作异常！');
+    }
+    function showError() {
+      ToastUtiles.error('操作失败！');
+    }
     return {
-      colors, opt1, optForSelect, switchVal, progresBarVal,
+      colors,
+      opt1,
+      optForSelect,
+      switchVal,
+      progresBarVal,
+      showToast,
+      showWarn,
+      showError,
     };
   },
 };
