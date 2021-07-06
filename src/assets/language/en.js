@@ -10,6 +10,7 @@ module.exports = {
     modal: 'modal',
     banner: 'banner',
     drag: 'drag',
+    snake: 'snake',
   },
   topBar: {
     language: 'language',

@@ -21,7 +21,8 @@ module.exports = {
     'linebreak-style': "off",
     'no-restricted-syntax': 'off',
     'no-plusplus': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    "no-bitwise": 'off', 
   },
 
 };

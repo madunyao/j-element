@@ -10,6 +10,7 @@ module.exports = {
     modal: '模态框',
     banner: '轮播图',
     drag: '拖拽',
+    snake: '贪吃蛇',
   },
   topBar: {
     language: '语言',

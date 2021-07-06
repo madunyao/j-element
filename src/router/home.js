@@ -4,6 +4,7 @@ import BannerView from '../views/bannerView.vue';
 import TabDivView from '../views/tabDivView.vue';
 import NavView from '../views/navView.vue';
 import dragView from '../views/dragView.vue';
+import snakeView from '../views/snakeView.vue';
 
 const homeRouter = [
   {
@@ -30,6 +31,10 @@ const homeRouter = [
     path: '/dragView',
     name: 'dragView',
     component: dragView,
+  }, {
+    path: '/snakeView',
+    name: 'snakeView',
+    component: snakeView,
   },
 ];
 
