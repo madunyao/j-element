@@ -11,6 +11,7 @@ module.exports = {
     banner: '轮播图',
     drag: '拖拽',
     snake: '贪吃蛇',
+    form: '表单',
   },
   topBar: {
     language: '语言',

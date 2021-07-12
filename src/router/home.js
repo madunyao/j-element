@@ -5,6 +5,7 @@ import TabDivView from '../views/tabDivView.vue';
 import NavView from '../views/navView.vue';
 import dragView from '../views/dragView.vue';
 import snakeView from '../views/snakeView.vue';
+import formView from '../views/formView.vue';
 
 const homeRouter = [
   {
@@ -35,6 +36,10 @@ const homeRouter = [
     path: '/snakeView',
     name: 'snakeView',
     component: snakeView,
+  }, {
+    path: '/formView',
+    name: 'formView',
+    component: formView,
   },
 ];
 

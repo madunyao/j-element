@@ -19,6 +19,7 @@ export default {
           { name: 'sidebar.modal', href: 'modalView' },
           { name: 'sidebar.banner', href: 'bannerView' },
           { name: 'sidebar.snake', href: 'snakeView' },
+          { name: 'sidebar.form', href: 'formView' },
         ],
       },
     };

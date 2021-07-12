@@ -11,6 +11,7 @@ module.exports = {
     banner: 'banner',
     drag: 'drag',
     snake: 'snake',
+    form: 'form',
   },
   topBar: {
     language: 'language',
